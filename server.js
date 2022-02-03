@@ -1,7 +1,7 @@
 const http = require('http');
 const app = require('./app');
 
-const port = process.env.NODE_PORT || 4000;
+const port = process.env.OPENSHIFT_NODEJS_PORT || 4000;
 
 const server = http.createServer(app);
 
