@@ -7,10 +7,20 @@ const Grid = require("gridfs-stream");
 const { GridFsStorage } = require("multer-gridfs-storage");
 const Attachement = require("./Attachement.model");
 
+const mongodb_connection_string = 'mongodb://127.0.0.1:27017/';
+
+//take advantage of openshift env vars when available:
+
+if(process.env.OPENSHIFT_MONGODB_DB_URL){
+
+  mongodb_connection_string = process.env.OPENSHIFT_MONGODB_DB_URL;
+
+}
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-const mongoURI = "mongodb://root:root@localhost:27017";
+const mongoURI = "mongodb://mongodb_connection_string";
 const conn = mongoose.createConnection(mongoURI);
 
 
