@@ -28,11 +28,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 const mongoURI = "mongodb://"+mongodb_connection_string;
-const conn = await mongoose.createConnection(mongoURI);
+const conn =  mongoose.createConnection(mongoURI);
 
 
 let gfs;
-conn.once("open", () => {
+ conn.once("open", () => {
   // Init stream
   gfs = Grid(conn.db, mongoose.mongo);
 });
