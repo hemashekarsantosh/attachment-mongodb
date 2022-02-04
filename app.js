@@ -20,7 +20,7 @@ console.log('MONGODB secret'+process.env.DATABASE_PASSWORD);
 
 if(process.env.OPENSHIFT_MONGODB_DB_HOST){
 
-  mongodb_connection_string = DBUSER+':'+DBPASS+'@'+process.env.OPENSHIFT_MONGODB_DB_HOST+':'+process.env.OPENSHIFT_MONGODB_DB_PORT;
+  mongodb_connection_string = DBUSER+':'+DBPASS+'@'+process.env.OPENSHIFT_MONGODB_DB_HOST+':'+process.env.OPENSHIFT_MONGODB_DB_PORT+'/'+process.env.DATABASE_NAME;
   console.log('MONGODB URL'+mongodb_connection_string);
 }
 

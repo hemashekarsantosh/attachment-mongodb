@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-mongoose.connect('mongodb://root:root@localhost:27017');
+
 const Schema = mongoose.Schema;
 
 const AttachmentSchema = new Schema({
