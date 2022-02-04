@@ -29,13 +29,15 @@ app.use(bodyParser.json());
 
 const mongoURI = "mongodb://"+mongodb_connection_string;
 const conn = mongoose.createConnection(mongoURI);
-const Attachement = require("./Attachement.model");
+
 
 let gfs;
 conn.once("open", () => {
   // Init stream
   gfs = Grid(conn.db, mongoose.mongo);
 });
+
+const Attachement = require("./Attachement.model");
 
 const storage = new GridFsStorage({
   url: mongoURI,
