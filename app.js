@@ -28,7 +28,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 const mongoURI = "mongodb://"+mongodb_connection_string;
-const conn = mongoose.createConnection(mongoURI);
+const conn = await mongoose.createConnection(mongoURI);
 
 
 let gfs;
