@@ -11,6 +11,10 @@ const mongodb_connection_string = 'mongodb://127.0.0.1:27017/';
 
 //take advantage of openshift env vars when available:
 
+console.log('MONGODB URL'+process.env.OPENSHIFT_MONGODB_DB_URL);
+console.log('MONGODB USer'+process.env.DATABASE_USER);
+console.log('MONGODB secret'+process.env.DATABASE_PASSWORD);
+
 if(process.env.OPENSHIFT_MONGODB_DB_URL){
 
   mongodb_connection_string = process.env.OPENSHIFT_MONGODB_DB_URL;
