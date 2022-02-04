@@ -1,10 +1,13 @@
 const http = require('http');
 const app = require('./app');
+const port = 4000
 
-const port = process.env.OPENSHIFT_NODEJS_PORT || 4000;
+if(process.env.NODE_PORT){
+    port=process.env.NODE_PORT
+}
 
 const server = http.createServer(app);
 
 server.listen(port,() => console.log('Server started on port ' + port) );
-console.log('Open Shift Node JS PORT '+process.env.OPENSHIFT_NODEJS_PORT);
-console.log('NODE PORT'+process.env.NODE_PORT);
+
+

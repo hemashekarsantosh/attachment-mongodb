@@ -5,28 +5,31 @@ const multer = require("multer");
 const mongoose = require("mongoose");
 const Grid = require("gridfs-stream");
 const { GridFsStorage } = require("multer-gridfs-storage");
-const Attachement = require("./Attachement.model");
+
 
 const mongodb_connection_string = 'mongodb://127.0.0.1:27017/';
 
 //take advantage of openshift env vars when available:
+const DBUSER=process.env.DATABASE_USER;
+const DBPASS= process.env.DATABASE_PASSWORD;
 
-console.log('MONGODB URL'+process.env.OPENSHIFT_MONGODB_DB_URL);
+
+console.log('MONGODB URL'+process.env.OPENSHIFT_MONGODB_DB_HOST);
 console.log('MONGODB USer'+process.env.DATABASE_USER);
 console.log('MONGODB secret'+process.env.DATABASE_PASSWORD);
 
-if(process.env.OPENSHIFT_MONGODB_DB_URL){
+if(process.env.OPENSHIFT_MONGODB_DB_HOST){
 
-  mongodb_connection_string = process.env.OPENSHIFT_MONGODB_DB_URL;
-
+  mongodb_connection_string = DBUSER+':'+DBPASS+'@'+process.env.OPENSHIFT_MONGODB_DB_HOST+':'+process.env.OPENSHIFT_MONGODB_DB_PORT;
+  console.log('MONGODB URL'+mongodb_connection_string);
 }
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-const mongoURI = "mongodb://mongodb_connection_string";
+const mongoURI = "mongodb://"+mongodb_connection_string;
 const conn = mongoose.createConnection(mongoURI);
-
+const Attachement = require("./Attachement.model");
 
 let gfs;
 conn.once("open", () => {
