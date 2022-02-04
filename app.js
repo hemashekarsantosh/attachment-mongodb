@@ -72,9 +72,9 @@ app.post("/api/file/upload", (req, res) => {
         .then(() => {
           res.json({ attachment: attachment });
         })
-        .catch(() => {
+        .catch((err) => {
           res.status(500).json({
-            message: "Error uploading File",
+            message: "Error uploading File "+err,
           });
         });
     }
