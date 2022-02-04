@@ -7,7 +7,7 @@ const Grid = require("gridfs-stream");
 const { GridFsStorage } = require("multer-gridfs-storage");
 
 
-const mongodb_connection_string = 'mongodb://127.0.0.1:27017/';
+let mongodb_connection_string = 'mongodb://127.0.0.1:27017/';
 
 //take advantage of openshift env vars when available:
 const DBUSER=process.env.DATABASE_USER;

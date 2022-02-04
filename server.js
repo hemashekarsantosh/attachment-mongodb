@@ -1,6 +1,6 @@
 const http = require('http');
 const app = require('./app');
-const port = 4000
+let port = 4000
 
 if(process.env.NODE_PORT){
     port=process.env.NODE_PORT
